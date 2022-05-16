@@ -5,12 +5,12 @@ import { RowProps } from "../../util/interfaces";
 //Utils
 import { checkLetter } from "../../util/functions";
 
-const Row = ({word, solution}: RowProps) => {
+const Row = ({word, solution, toggle}: RowProps) => {
     return (
         <div className="flex flex-row">
            {
                Array.from(Array(5)).map((e,i) => (
-                   <Box key={i} value={word[i]} status={checkLetter(word[i], i, solution)}/>
+                   <Box key={i} value={word[i]} status={checkLetter(word[i], i, solution)} toggle={toggle}/>
                ))
            }
         </div>

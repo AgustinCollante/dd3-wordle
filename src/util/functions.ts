@@ -3,11 +3,19 @@ import { words } from "./wordsList.js";
 
 
 export const colorsByStatus = (status: BoxStatus) => {
-  if (status === "absent") return "grey text-white";
+  if (status === "absent") return "bg-mediumGrey text-white";
+  if (status === "correct") return "bg-green text-white";
+  if (status === "present") return "bg-yellow text-white";
+  if (status === "empty") return "bg-[#DADDDE]";
+  if (status === "edit") return "bg-[#DADDDE]";
+};
+
+export const darkColorsByStatus = (status: BoxStatus) => {
+  if (status === "absent") return "mediumGrey text-white";
   if (status === "correct") return "green text-white";
   if (status === "present") return "yellow text-white";
-  if (status === "empty") return "lightGrey";
-  if (status === "edit") return "lightGrey";
+  if (status === "empty") return "darkEmptyLetter";
+  if (status === "edit") return "darkEmptyLetter";
 };
 
 export const checkLetter = (letter: string, pos: number, solution: string) => {
@@ -68,5 +76,12 @@ export const normalizeWord = (word: string) => {
 
 export const isValidWord = (word: string) => {
     let wordsFiltered = words.filter((e:string) => e.length === 5);
-    return wordsFiltered.includes(word);
+    return wordsFiltered.includes(word.toLowerCase());
 }
+
+export const secondsToTime = (e:number) => {
+  let m = Math.floor(e % 3600 / 60).toString().padStart(2,'0');
+  let s = Math.floor(e % 60).toString().padStart(2,'0');
+
+return m + ':' + s;
+};
